@@ -17,11 +17,32 @@ public class MethodArrayDemo {
         return max;
     }
 
+    static int[] urutkanAscending(int[] data) {
+        int[] hasil = data.clone();
+        for (int i = 0; i < hasil.length - 1; i++) {
+            for (int j = 0; j < hasil.length - 1 - i; j++) {
+                if (hasil[j] > hasil[j + 1]) {
+                    int temp = hasil[j];
+                    hasil[j] = hasil[j + 1];
+                    hasil[j + 1] = temp;
+                }
+            }
+        }
+        return hasil;
+    }
     public static void main(String[] args) {
+        // --- KODE LAMA ---
         int[] nilaiUjian = {80, 75, 90, 60, 88};
 
         System.out.println("Rata-rata: " + hitungRataRata(nilaiUjian));
         System.out.println("Maksimum: " + cariMaksimum(nilaiUjian));
+
+        // --- KODE BARU ---
+        int[] terurut = urutkanAscending(nilaiUjian);
+        System.out.print("Setelah diurutkan: ");
+        for (int n : terurut) {
+            System.out.print(n + " ");
+        }
     }
 }
 
